@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import { View } from "react-native";
-import { array, object } from 'prop-types';
+import { array, string } from 'prop-types';
 
 export default class Hook extends Component {
     render() {
         const width = this.props.size[0];
         const height = this.props.size[1];
-        const x = this.props.body.position.x - width / 2;
-        const y = this.props.body.position.y - height / 2;
+        const x = this.props.position[0] - width / 2;
+        const y = this.props.position[1] - height / 2;
 
         return [
             <View
                 style = {{
                     position: "absolute",
-                    left: this.props.body.position.x,
+                    left: this.props.position[0],
                     top: 0,
                     width: 1,
                     height: y,
@@ -27,7 +27,7 @@ export default class Hook extends Component {
                     top: y,
                     width: width,
                     height: height,
-                    backgroundColor: "gray"
+                    backgroundColor: this.props.color || "pink"
                 }}
             />
         ];
@@ -36,5 +36,6 @@ export default class Hook extends Component {
 
 Hook.propTypes = {
     size: array,
-    body: object
+    position: array,
+    color: string
 }

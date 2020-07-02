@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { View } from "react-native";
-import { array, object, string } from 'prop-types';
+import { array, number, string, bool } from 'prop-types';
 
 export default class Fish extends Component {
     render() {
         const width = this.props.size[0];
         const height = this.props.size[1];
-        const x = this.props.body.position.x - width / 2;
-        const y = this.props.body.position.y - height / 2;
+        const x = this.props.position[0] - width / 2;
+        const y = this.props.position[1] - height / 2;
 
         return (
             <View
@@ -26,6 +26,8 @@ export default class Fish extends Component {
 
 Fish.propTypes = {
     size: array,
-    body: object,
-    color: string
+    position: array,
+    speed: number,
+    color: string,
+    wraparound: bool
 }
