@@ -5,6 +5,7 @@ import Physics from "./Physics";
 import Update from "./Update";
 import Constants from "./Constants";
 import Score from "./Score";
+import GameOver from "./GameOver";
 import { GameEngine } from "react-native-game-engine";
 import { Dimensions, StyleSheet, StatusBar, View, Text } from 'react-native';
 
@@ -41,6 +42,12 @@ export default function App() {
         }
     }
 
+    entities.gameOver = {
+        position: [width/7, height/3],
+        state: false,
+        renderer: GameOver
+    };
+    
     return (
         <GameEngine
             ref={(ref) => { gameEngine = ref; }}
